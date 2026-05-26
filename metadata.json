@@ -1,0 +1,6 @@
+{
+  "name": "AI Digital Operations System",
+  "description": "A foundational digital operating system for automating and managing personal, business, and cloud workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
