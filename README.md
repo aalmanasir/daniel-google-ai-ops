@@ -33,7 +33,7 @@ The system is engineered as a secure **Full-Stack (Vite + Express)** application
 2. **Google Workspace Hub**
    - **Gmail Systems Node**: Scans inboxes, triggers real-time filter indexing, tags critical corporate threads, and drafts summaries.
    - **Drive Storage Node**: Audits directory layouts and tracks file trees across your premium 30 TB storage limits.
-   - **People Guard Node**: Meticulously parses contacts, identifies spelling variations, and implements a deep **UAE mobile formatting normalization audit** (`050...` ➜ `+97150...`).
+   - **People Guard Node**: Meticulously parses contacts, identifies spelling variations, and implements a deep **UAE mobile formatting normalization audit** (`050...` → `+97150...`).
 
 3. **Google Cloud Run Node**
    - Monitors container memory consumption, ingress, and manages Cloud KMS key rotations.
@@ -80,10 +80,13 @@ GOOGLE_APPLICATION_CREDENTIALS="/path/to/keyfile.json"
 
 ## Workspace API Scopes
 
-This system requests only the minimum permitted scopes to manage indexes:
-* `contacts.readonly` / `contacts` — Access and format People profiles.
-* `drive.readonly` — Index files for global dashboard queries.
-* `gmail.readonly` / `gmail.modify` — Process messages and construct filter tags.
+This system starts with read-only scopes so the dashboard can audit safely before any write action is approved:
+* `contacts.readonly` — Audit Google Contacts without modifying records.
+* `drive.readonly` — Index Drive files for dashboard queries without moving, renaming, sharing, or deleting files.
+* `gmail.readonly` — Summarize and classify Gmail messages without sending, archiving, labeling, or deleting mail.
+* `calendar.readonly` — Read Calendar events for planning without creating, moving, or cancelling events.
+
+Write scopes such as `contacts`, `gmail.modify`, and `calendar` must be added only after Abdulla approves a specific write workflow.
 
 ---
 
