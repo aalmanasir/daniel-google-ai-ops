@@ -13,12 +13,11 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const provider = new GoogleAuthProvider();
-// Add required scopes
-provider.addScope("https://www.googleapis.com/auth/contacts");
+// Start with read-only Workspace scopes. Request write/modify scopes only after Abdulla approves a specific action.
+provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 provider.addScope("https://www.googleapis.com/auth/drive.readonly");
 provider.addScope("https://www.googleapis.com/auth/gmail.readonly");
-provider.addScope("https://www.googleapis.com/auth/gmail.modify");
-provider.addScope("https://www.googleapis.com/auth/calendar");
+provider.addScope("https://www.googleapis.com/auth/calendar.readonly");
 
 let isSigningIn = false;
 let cachedAccessToken: string | null = null;
