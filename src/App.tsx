@@ -38,7 +38,7 @@ export default function App() {
         setUser(currentUser);
         setAccessToken(token);
         setAuthLoading(false);
-        addLog("OAUTH_AUTH_SUCCESS", `Authenticated as ${currentUser.email}. All Workspace APIs enabled.`, "DONE", "Daniel");
+        addLog("OAUTH_AUTH_SUCCESS", `Authenticated as ${currentUser.email}. Read-only Workspace APIs connected; write actions remain approval-locked.`, "DONE", "Daniel");
       },
       () => {
         setUser(null);
@@ -56,7 +56,7 @@ export default function App() {
       if (result) {
         setUser(result.user);
         setAccessToken(result.accessToken);
-        addLog("OAUTH_SIGN_IN", `Manually authenticated email: ${result.user.email}`, "DONE", "Daniel");
+        addLog("OAUTH_SIGN_IN", `Read-only Workspace session authenticated for: ${result.user.email}`, "DONE", "Daniel");
       }
     } catch (err) {
       console.error("Auth popup error:", err);
